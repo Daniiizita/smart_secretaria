@@ -6,23 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {% load static %}
   <title>{% block title %}{{ title }}{% endblock %}</title>
-  <h1> {{ subtitle }} </h1>
-  <link rel="stylesheet" href="{% static 'css/core.css' %}">  {# /static/css/styles.css #}
-  <!-- Aqui você pode linkar CSS global (Bootstrap/Tailwind futuramente) -->
+  <link rel="stylesheet" href="{% static 'css/core.css' %}">
+  {% block extra_css %}{% endblock %}
 </head>
 <body>
   <header>
-    <h1>SmartSecretaria</h1>
+    <div style="display: flex; justify-content: space-between; padding: 10px;">
+      <h1>SmartSecretaria</h1>
+      {% if user.is_authenticated %}
+        <div>
+          <span>Olá, {{ user.username }}</span>
+          <a href="{% url 'usuarios:logout' %}" style="margin-left: 10px; background-color: #dc3545; color: white; padding: 5px 10px; text-decoration: none; border-radius: 4px;">Sair</a>
+        </div>
+      {% endif %}
+    </div>
+    
     <nav>
       <a href="{% url 'core:index' %}">Início</a>
-      <a href="{% url 'core:dashboard' %}">Dashboard</a>
-      <a href="/aluno/">Aluno</a>
-      <a href="/professor/">Professor</a>
-      <a href="/matricula/">Matrículas</a>
-      <a href="/calendario/">Calendário</a>
-      <a href="/documentos/">Documentos</a>
-      <a href="/usuarios/">Usuários</a>
-      <a href="/logs/">Logs</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'core:dashboard' %}">Dashboard</a>
+        <a href="/aluno/">Alunos</a>
+        <a href="/professor/">Professores</a>
+        <a href="/turma/">Turmas</a>
+        <a href="/matricula/">Matrículas</a>
+        <a href="/calendario/">Calendário</a>
+        <a href="/documentos/">Documentos</a>
+      {% else %}
+        <a href="{% url 'usuarios:login' %}">Login</a>
+        <a href="{% url 'usuarios:registro' %}">Registrar</a>
+      {% endif %}
     </nav>
     <hr />
   </header>
@@ -33,7 +45,7 @@
 
   <footer>
     <hr />
-    <small>&copy; {{ now|default:"2025" }}</small> <!--Cuidado com espaçamentos, dão erro de render-->
+    <small>&copy; {{ now|default:"2025" }}</small>
   </footer>
 </body>
 </html>

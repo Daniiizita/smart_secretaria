@@ -1,0 +1,59 @@
+{% extends "core/base.html" %}
+{% block title %}Professores - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Professores</h1>
+  
+  {% if messages %}
+    <div class="mensagens">
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <div class="acoes" style="margin-bottom: 20px;">
+    <a href="{% url 'professor:novo_professor' %}">Novo Professor</a>
+  </div>
+  
+  {% if professores %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Data de Admissão</th>
+          <th>Disciplinas</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for professor in professores %}
+          <tr>
+            <td>{{ professor.nome }}</td>
+            <td>{{ professor.email }}</td>
+            <td>{{ professor.telefone_contato }}</td>
+            <td>{{ professor.data_admissao }}</td>
+            <td>
+              {% for disciplina in professor.disciplinas.all %}
+                {{ disciplina.nome }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </td>
+            <td>
+              <a href="{% url 'professor:detalhe_professor' professor.id %}">Ver</a>
+              <a href="{% url 'professor:editar_professor' professor.id %}">Editar</a>
+              <a href="{% url 'professor:excluir_professor' professor.id %}">Excluir</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há professores cadastrados.</p>
+  {% endif %}
+</div>
+{% endblock %}

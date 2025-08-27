@@ -26,9 +26,9 @@ urlpatterns = [
     path('turma/', include('turma.urls')),
     path('professor/', include('professor.urls')),
     path('calendario/', include('calendario.urls')),
-    path('usuarios/', include('usuarios.urls')),
     path('documentos/', include('documentos.urls')),
     path('matricula/', include('matricula.urls')),
     path('accounts/', include('usuarios.urls')),
+    # path('usuarios/', include('usuarios.urls')),  # Removendo esta linha
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
