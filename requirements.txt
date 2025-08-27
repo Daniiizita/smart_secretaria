@@ -6,3 +6,4 @@ tzdata==2023.3
 pillow-heif
 pillow 
 django-rest-framework
+dotenv

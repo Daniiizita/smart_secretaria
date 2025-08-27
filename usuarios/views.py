@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from django.urls import reverse
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
 def registro_usuario(request):
@@ -10,7 +11,7 @@ def registro_usuario(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registro bem-sucedido!")
-            return redirect('home')
+            return redirect('core:index')
     else:
         form = CustomUserCreationForm()
     return render(request, 'usuarios/registro.html', {'form': form})
@@ -24,8 +25,10 @@ def login_usuario(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"Você está logado como {username}.")
-                return redirect('home')
+                messages.info(request, f"Bem-vindo, {username}!")
+                # Redirecionar para a página que o usuário estava tentando acessar
+                next_url = request.GET.get('next', 'core:index')
+                return redirect(next_url)
             else:
                 messages.error(request, "Nome de usuário ou senha inválidos.")
         else:
@@ -37,4 +40,4 @@ def login_usuario(request):
 def logout_usuario(request):
     logout(request)
     messages.info(request, "Você saiu com sucesso!")
-    return redirect('login')
+    return redirect('usuarios:login')

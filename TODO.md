@@ -86,3 +86,4 @@ Separar **front** e **back** em repositórios diferentes é uma escolha profissi
 * No front (React), use `.env` para apontar a URL da API e habilite **CORS** no back.
 * Planeje **autenticação** (sessão → JWT), **CI/CD** separados e **observabilidade** por serviço.
   
+## posterioremente refatorar em ingles o codigo

@@ -39,4 +39,4 @@ def dashboard(request):
         'ultimos_alunos': ultimos_alunos,
     }
     
-    return render(request, 'core/dashboard.html', context)
+    return render(request, "core/dashboard.html", context)
