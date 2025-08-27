@@ -4,5 +4,9 @@ from . import views
 app_name = 'calendario'
 
 urlpatterns = [
-    # Adicione as URLs do app aluno aqui
+    path('', views.lista_eventos, name='lista_eventos'),
+    path('evento/<int:pk>/', views.detalhe_evento, name='detalhe_evento'),
+    path('evento/novo/', views.novo_evento, name='novo_evento'),
+    path('evento/<int:pk>/editar/', views.editar_evento, name='editar_evento'),
+    path('evento/<int:pk>/excluir/', views.excluir_evento, name='excluir_evento'),
 ]

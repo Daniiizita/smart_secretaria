@@ -1,0 +1,42 @@
+[
+  {
+    "model": "documentos.documento",
+    "pk": 1,
+    "fields": {
+      "aluno": 1,
+      "tipo": "declaracao",
+      "data_emissao": "2023-03-10",
+      "conteudo": "Declaramos para os devidos fins que Pedro Henrique Souza está regularmente matriculado no 1º Ano A do Ensino Fundamental."
+    }
+  },
+  {
+    "model": "documentos.documento",
+    "pk": 2,
+    "fields": {
+      "aluno": 2,
+      "tipo": "boletim",
+      "data_emissao": "2023-04-20",
+      "conteudo": "Boletim escolar do 1º bimestre de 2023 da aluna Julia Santos Lima."
+    }
+  },
+  {
+    "model": "documentos.documento",
+    "pk": 3,
+    "fields": {
+      "aluno": 3,
+      "tipo": "historico",
+      "data_emissao": "2023-05-15",
+      "conteudo": "Histórico escolar completo do aluno Lucas Oliveira Mendes, contendo notas e frequência dos anos anteriores."
+    }
+  },
+  {
+    "model": "documentos.documento",
+    "pk": 4,
+    "fields": {
+      "aluno": 4,
+      "tipo": "atestado",
+      "data_emissao": "2023-02-28",
+      "conteudo": "Atestamos que Mariana Costa Silva está devidamente matriculada nesta instituição de ensino no ano letivo de 2023."
+    }
+  }
+]

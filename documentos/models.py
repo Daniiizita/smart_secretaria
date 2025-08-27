@@ -9,9 +9,9 @@ class Documento(models.Model):
         ('atestado', 'Atestado de Matrícula'),
         ('certificado', 'Certificado de Conclusão'),
         ('contagem', 'Contagem de Tempo'),
-        ('ata', 'Ata de Reunião de Pais'),
+        ('ata', 'Ata de Reunião'),
         ('outros', 'Outros')
-        # Adicione outros tipos conforme necessário
+        
     ]
 
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
@@ -23,4 +23,3 @@ class Documento(models.Model):
         return f"{self.tipo} - {self.aluno.nome_completo}"
 
 
-# Create your models here.

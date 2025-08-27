@@ -1,0 +1,38 @@
+<!-- core/templates/base.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% load static %}
+  <title>{% block title %}{{ title }}{% endblock %}</title>
+  <h1> {{ subtitle }} </h1>
+  <link rel="stylesheet" href="{% static 'css/core.css' %}">  {# /static/css/styles.css #}
+  <!-- Aqui você pode linkar CSS global (Bootstrap/Tailwind futuramente) -->
+</head>
+<body>
+  <header>
+    <h1>SmartSecretaria</h1>
+    <nav>
+      <a href="{% url 'core:index' %}">Início</a>
+      <a href="/aluno/">Aluno</a>
+      <a href="/professor/">Professor</a>
+      <a href="/matricula/">Matrículas</a>
+      <a href="/calendario/">Calendário</a>
+      <a href="/documentos/">Documentos</a>
+      <a href="/usuarios/">Usuários</a>
+      <a href="/logs/">Logs</a>
+    </nav>
+    <hr />
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <hr />
+    <small>&copy; {{ now|default:"2025" }}</small> <!--Cuidado com espaçamentos, dão erro de render-->
+  </footer>
+</body>
+</html>

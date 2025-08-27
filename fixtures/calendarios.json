@@ -1,0 +1,46 @@
+[
+  {
+    "model": "calendario.evento",
+    "pk": 1,
+    "fields": {
+      "titulo": "Início do Ano Letivo",
+      "descricao": "Primeiro dia de aula do ano letivo",
+      "data_inicio": "2023-02-01T07:00:00Z",
+      "data_fim": "2023-02-01T17:00:00Z",
+      "tipo": "evento_escolar"
+    }
+  },
+  {
+    "model": "calendario.evento",
+    "pk": 2,
+    "fields": {
+      "titulo": "Feriado - Carnaval",
+      "descricao": "Feriado nacional de Carnaval",
+      "data_inicio": "2023-02-20T00:00:00Z",
+      "data_fim": "2023-02-21T23:59:59Z",
+      "tipo": "feriado"
+    }
+  },
+  {
+    "model": "calendario.evento",
+    "pk": 3,
+    "fields": {
+      "titulo": "Reunião de Pais e Mestres",
+      "descricao": "Reunião trimestral para acompanhamento dos alunos",
+      "data_inicio": "2023-04-15T19:00:00Z",
+      "data_fim": "2023-04-15T21:30:00Z",
+      "tipo": "reuniao"
+    }
+  },
+  {
+    "model": "calendario.evento",
+    "pk": 4,
+    "fields": {
+      "titulo": "Festa Junina",
+      "descricao": "Celebração anual da festa junina da escola",
+      "data_inicio": "2023-06-24T10:00:00Z",
+      "data_fim": "2023-06-24T18:00:00Z",
+      "tipo": "evento_escolar"
+    }
+  }
+]

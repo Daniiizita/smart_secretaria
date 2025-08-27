@@ -1,15 +1,6 @@
 from django.db import models
 from professor.models import Professor
-
-
-class Turma(models.Model):
-    turma_nome = models.CharField(max_length=100)
-    turma_ano = models.IntegerField()
-    professor_responsavel = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    horario_aulas = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.turma_nome
+from turma.models import Turma
     
 
 class Aluno(models.Model):
@@ -29,11 +20,6 @@ class Aluno(models.Model):
     def __str__(self):
         return f"{self.nome_completo} - Turma: {self.turma}"
 
-    def save(self, *args, **kwargs):
-        if self.turma and not Turma.objects.filter(id=self.turma.id).exists():
-            raise ValueError("A turma atribuída ao aluno não existe.")
-        super().save(*args, **kwargs)
-        
-    
+
 
 

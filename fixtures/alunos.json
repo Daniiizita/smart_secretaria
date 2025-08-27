@@ -1,0 +1,221 @@
+[
+  {
+    "model": "aluno.aluno",
+    "pk": 1,
+    "fields": {
+      "nome_completo": "Bruno Almeida",
+      "data_nascimento": "2015-04-12",
+      "nome_pai": "Ricardo Almeida",
+      "nome_mae": "Paula Almeida",
+      "cpf": "11111111111",
+      "rg": "RG111111",
+      "endereco": "Rua A, 100",
+      "telefone_contato": "11990001111",
+      "email": "bruno.almeida@example.com",
+      "nome_responsavel": "Paula Almeida",
+      "turma": 1,
+      "foto": ""
+    }
+  },
+  {
+    "model": "aluno.aluno",
+    "pk": 2,
+    "fields": {
+      "nome_completo": "Camila Rocha",
+      "data_nascimento": "2015-08-23",
+      "nome_pai": "Marcos Rocha",
+      "nome_mae": "Luciana Rocha",
+      "cpf": "22222222222",
+      "rg": "RG222222",
+      "endereco": "Rua B, 200",
+      "telefone_contato": "11990002222",
+      "email": "camila.rocha@example.com",
+      "nome_responsavel": "Luciana Rocha",
+      "turma": 1,
+      "foto": ""
+    }
+  },
+  {
+    "model": "aluno.aluno",
+    "pk": 3,
+    "fields": {
+      "nome_completo": "Diego Martins",
+      "data_nascimento": "2015-12-05",
+      "nome_pai": "Fábio Martins",
+      "nome_mae": "Juliana Martins",
+      "cpf": "33333333333",
+      "rg": "RG333333",
+      "endereco": "Rua C, 300",
+      "telefone_contato": "11990003333",
+      "email": "diego.martins@example.com",
+      "nome_responsavel": "Juliana Martins",
+      "turma": 1,
+      "foto": ""
+    }
+  },
+
+  {
+    "model": "aluno.aluno",
+    "pk": 4,
+    "fields": {
+      "nome_completo": "Eduarda Nunes",
+      "data_nascimento": "2014-03-15",
+      "nome_pai": "Sérgio Nunes",
+      "nome_mae": "Marta Nunes",
+      "cpf": "44444444444",
+      "rg": "RG444444",
+      "endereco": "Av. Central, 10",
+      "telefone_contato": "11990004444",
+      "email": "eduarda.nunes@example.com",
+      "nome_responsavel": "Marta Nunes",
+      "turma": 2,
+      "foto": ""
+    }
+  },
+  {
+    "model": "aluno.aluno",
+    "pk": 5,
+    "fields": {
+      "nome_completo": "Felipe Costa",
+      "data_nascimento": "2014-07-29",
+      "nome_pai": "Rogério Costa",
+      "nome_mae": "Aline Costa",
+      "cpf": "55555555555",
+      "rg": "RG555555",
+      "endereco": "Av. Central, 20",
+      "telefone_contato": "11990005555",
+      "email": "felipe.costa@example.com",
+      "nome_responsavel": "Aline Costa",
+      "turma": 2,
+      "foto": ""
+    }
+  },
+  {
+    "model": "aluno.aluno",
+    "pk": 6,
+    "fields": {
+      "nome_completo": "Gabriela Teixeira",
+      "data_nascimento": "2014-10-10",
+      "nome_pai": "Paulo Teixeira",
+      "nome_mae": "Renata Teixeira",
+      "cpf": "66666666666",
+      "rg": "RG666666",
+      "endereco": "Av. Central, 30",
+      "telefone_contato": "11990006666",
+      "email": "gabriela.teixeira@example.com",
+      "nome_responsavel": "Renata Teixeira",
+      "turma": 2,
+      "foto": ""
+    }
+  },
+
+  {
+    "model": "aluno.aluno",
+    "pk": 7,
+    "fields": {
+      "nome_completo": "Henrique Barros",
+      "data_nascimento": "2013-02-18",
+      "nome_pai": "Otávio Barros",
+      "nome_mae": "Patrícia Barros",
+      "cpf": "77777777777",
+      "rg": "RG777777",
+      "endereco": "Praça Azul, 1",
+      "telefone_contato": "11990007777",
+      "email": "henrique.barros@example.com",
+      "nome_responsavel": "Patrícia Barros",
+      "turma": 3,
+      "foto": ""
+    }
+  },
+  {
+    "model": "aluno.aluno",
+    "pk": 8,
+    "fields": {
+      "nome_completo": "Isabela Freitas",
+      "data_nascimento": "2013-06-21",
+      "nome_pai": "Alexandre Freitas",
+      "nome_mae": "Daniela Freitas",
+      "cpf": "88888888888",
+      "rg": "RG888888",
+      "endereco": "Praça Azul, 2",
+      "telefone_contato": "11990008888",
+      "email": "isabela.freitas@example.com",
+      "nome_responsavel": "Daniela Freitas",
+      "turma": 3,
+      "foto": ""
+    }
+  },
+  {
+    "model": "aluno.aluno",
+    "pk": 9,
+    "fields": {
+      "nome_completo": "João Victor Lima",
+      "data_nascimento": "2013-11-09",
+      "nome_pai": "Rafael Lima",
+      "nome_mae": "Carolina Lima",
+      "cpf": "99999999999",
+      "rg": "RG999999",
+      "endereco": "Praça Azul, 3",
+      "telefone_contato": "11990009999",
+      "email": "joao.victor@example.com",
+      "nome_responsavel": "Carolina Lima",
+      "turma": 3,
+      "foto": ""
+    }
+  },
+
+  {
+    "model": "aluno.aluno",
+    "pk": 10,
+    "fields": {
+      "nome_completo": "Larissa Monteiro",
+      "data_nascimento": "2012-01-30",
+      "nome_pai": "Eduardo Monteiro",
+      "nome_mae": "Fernanda Monteiro",
+      "cpf": "10101010101",
+      "rg": "RG101010",
+      "endereco": "Rua do Sol, 50",
+      "telefone_contato": "11991110000",
+      "email": "larissa.monteiro@example.com",
+      "nome_responsavel": "Fernanda Monteiro",
+      "turma": 4,
+      "foto": ""
+    }
+  },
+  {
+    "model": "aluno.aluno",
+    "pk": 11,
+    "fields": {
+      "nome_completo": "Matheus Ribeiro",
+      "data_nascimento": "2012-05-12",
+      "nome_pai": "Gustavo Ribeiro",
+      "nome_mae": "Priscila Ribeiro",
+      "cpf": "12121212121",
+      "rg": "RG121212",
+      "endereco": "Rua do Sol, 60",
+      "telefone_contato": "11992220000",
+      "email": "matheus.ribeiro@example.com",
+      "nome_responsavel": "Priscila Ribeiro",
+      "turma": 4,
+      "foto": ""
+    }
+  },
+  {
+    "model": "aluno.aluno",
+    "pk": 12,
+    "fields": {
+      "nome_completo": "Nicole Fernandes",
+      "data_nascimento": "2012-09-03",
+      "nome_pai": "Thiago Fernandes",
+      "nome_mae": "Beatriz Fernandes",
+      "cpf": "13131313131",
+      "rg": "RG131313",
+      "endereco": "Rua do Sol, 70",
+      "telefone_contato": "11993330000",
+      "email": "nicole.fernandes@example.com",
+      "nome_responsavel": "Beatriz Fernandes",
+      "turma": 4,
+      "foto": ""
+    }
+  }
+]

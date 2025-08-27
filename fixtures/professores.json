@@ -1,0 +1,62 @@
+[
+  {
+    "model": "professor.professor",
+    "pk": 1,
+    "fields": {
+      "nome": "Maria Silva",
+      "cpf": "12345678901",
+      "rg": "1234567",
+      "endereco": "Rua das Flores, 123",
+      "telefone_contato": "11987654321",
+      "email": "maria.silva@escola.edu.br",
+      "data_admissao": "2020-01-15",
+      "foto": "",
+      "disciplinas": [1, 5]
+    }
+  },
+  {
+    "model": "professor.professor",
+    "pk": 2,
+    "fields": {
+      "nome": "João Santos",
+      "cpf": "98765432101",
+      "rg": "7654321",
+      "endereco": "Avenida Central, 456",
+      "telefone_contato": "11912345678",
+      "email": "joao.santos@escola.edu.br",
+      "data_admissao": "2019-03-10",
+      "foto": "",
+      "disciplinas": [2, 8]
+    }
+  },
+  {
+    "model": "professor.professor",
+    "pk": 3,
+    "fields": {
+      "nome": "Ana Oliveira",
+      "cpf": "45678912301",
+      "rg": "4567891",
+      "endereco": "Praça das Árvores, 789",
+      "telefone_contato": "11945678923",
+      "email": "ana.oliveira@escola.edu.br",
+      "data_admissao": "2021-02-01",
+      "foto": "",
+      "disciplinas": [3, 4]
+    }
+  },
+  {
+    "model": "professor.professor",
+    "pk": 4,
+    "fields": {
+      "nome": "Carlos Pereira",
+      "cpf": "78912345601",
+      "rg": "7891234",
+      "endereco": "Rua dos Pássaros, 321",
+      "telefone_contato": "11978912345",
+      "email": "carlos.pereira@escola.edu.br",
+      "data_admissao": "2018-08-20",
+      "foto": "",
+      "disciplinas": [6, 7]
+    }
+  }
+]

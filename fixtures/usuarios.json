@@ -1,0 +1,78 @@
+[
+  {
+    "model": "usuarios.customuser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$cUsGa9Er6Phvs4zICwRHtB$gKCBKP8u6hqF8CCq1acYNl1BUk1C+8HR9URck9Nod1E=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "Admin",
+      "last_name": "Sistema",
+      "email": "admin@smartsecretaria.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01T00:00:00Z",
+      "tipo": "admin",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "usuarios.customuser",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$8HdsfgGjnMk7FCT5xNhYR$2kLv+QFEXuVS9HU4VQ8AF9Sx/tL/7Q3qDx1+hrnO5Qc=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "secretario",
+      "first_name": "João",
+      "last_name": "Secretário",
+      "email": "secretario@smartsecretaria.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-02T00:00:00Z",
+      "tipo": "secretario",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "usuarios.customuser",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$AbCdfG5hIJklM7nOPqrS$3tKfdEfGhIjKlMnOPqrSTuVwXyZ1A2b3C4D5e6F7g8H=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "professor1",
+      "first_name": "Maria",
+      "last_name": "Silva",
+      "email": "maria.silva@escola.edu.br",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-01-03T00:00:00Z",
+      "tipo": "professor",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "usuarios.customuser",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$tUvWxYzA1B2c3D4E5f6G$7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4Y5z6A7b=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "aluno1",
+      "first_name": "Pedro",
+      "last_name": "Souza",
+      "email": "pedro.souza@aluno.escola.edu.br",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-01-04T00:00:00Z",
+      "tipo": "aluno",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
