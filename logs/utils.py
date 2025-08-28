@@ -1,26 +1,21 @@
-from django.utils import timezone
 from .models import LogAtividade
+from django.utils import timezone
 
 def registrar_atividade(usuario, acao, descricao_detalhada=None):
     """
-    Registra uma atividade realizada por um usuário no sistema.
+    Registra uma atividade no sistema de logs.
     
-    Args:
-        usuario: O usuário que realizou a ação
-        acao: Descrição curta da ação (ex: "Criação de Aluno")
-        descricao_detalhada: Descrição mais detalhada da ação (opcional)
+    Parâmetros:
+    - usuario: Instância de CustomUser que realizou a ação
+    - acao: String descrevendo a ação realizada (ex: "Criação de Aluno")
+    - descricao_detalhada: Detalhes adicionais sobre a ação (opcional)
+    
+    Retorna:
+    - Instância do LogAtividade criado
     """
-    try:
-        # Verifica se o usuário é válido
-        if usuario and hasattr(usuario, 'id'):
-            LogAtividade.objects.create(
-                usuario=usuario,
-                data_hora=timezone.now(),
-                acao=acao,
-                descricao_detalhada=descricao_detalhada or ""
-            )
-        else:
-            print("Aviso: Tentativa de registrar log sem usuário válido")
-    except Exception as e:
-        print(f"Erro ao registrar atividade: {str(e)}")
-        # Não propaga a exceção, apenas registra o erro
+    return LogAtividade.objects.create(
+        usuario=usuario,
+        acao=acao,
+        descricao_detalhada=descricao_detalhada,
+        data_hora=timezone.now()
+    )
