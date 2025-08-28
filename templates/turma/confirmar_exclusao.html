@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+{% block title %}Excluir Turma - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Confirmar Exclusão</h1>
+  
+  <div class="alert alert-danger">
+    <p>Tem certeza que deseja excluir a turma <strong>{{ turma.nome }}</strong>?</p>
+    <p>Esta ação não poderá ser desfeita.</p>
+    
+    {% if alunos_na_turma %}
+      <div class="alert alert-warning">
+        <p><strong>Atenção!</strong> Existem alunos matriculados nesta turma. A exclusão não será permitida.</p>
+        <p>Você precisa transferir todos os alunos para outras turmas antes de excluir esta.</p>
+      </div>
+    {% endif %}
+  </div>

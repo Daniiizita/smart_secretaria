@@ -1,0 +1,60 @@
+{% extends "core/base.html" %}
+{% block title %}{{ titulo }} - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>{{ titulo }}</h1>
+  
+  <form method="post">
+    {% csrf_token %}
+    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="{{ form.serie.id_for_label }}">Série:</label>
+          {{ form.serie }}
+          {{ form.serie.errors }}
+        </div>
+        
+        <div class="form-group">
+          <label for="{{ form.turma_letra.id_for_label }}">Letra da Turma:</label>
+          {{ form.turma_letra }}
+          {{ form.turma_letra.errors }}
+        </div>
+        
+        <div class="form-group">
+          <label for="{{ form.professor_responsavel.id_for_label }}">Professor Responsável:</label>
+          {{ form.professor_responsavel }}
+          {{ form.professor_responsavel.errors }}
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="{{ form.ano.id_for_label }}">Ano Letivo:</label>
+          {{ form.ano }}
+          {{ form.ano.errors }}
+        </div>
+        
+        <div class="form-group">
+          <label for="{{ form.periodo.id_for_label }}">Período:</label>
+          {{ form.periodo }}
+          {{ form.periodo.errors }}
+        </div>
+        
+        <div class="form-group">
+          <label for="{{ form.horario_aulas.id_for_label }}">Horário das Aulas:</label>
+          {{ form.horario_aulas }}
+          {{ form.horario_aulas.errors }}
+          <small class="form-text text-muted">Informe os horários de cada dia da semana.</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="botoes" style="margin-top: 20px;">
+      <button type="submit">Salvar</button>
+      <a href="{% url 'turma:lista_turmas' %}">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
