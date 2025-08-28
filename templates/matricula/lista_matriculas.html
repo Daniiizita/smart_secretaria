@@ -1,0 +1,107 @@
+{% extends "core/base.html" %}
+{% block title %}Matrículas - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Matrículas</h1>
+  
+  {% if messages %}
+    <div class="mensagens">
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <div class="acoes" style="margin-bottom: 20px;">
+    <a href="{% url 'matricula:nova_matricula' %}">Nova Matrícula</a>
+  </div>
+  
+  <div class="filtros" style="margin-bottom: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 5px;">
+    <h4>Filtrar Matrículas</h4>
+    <form method="get" class="form-inline">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="ano_letivo">Ano Letivo:</label>
+          <select name="ano_letivo" id="ano_letivo" class="form-control">
+            <option value="">Todos</option>
+            {% for ano in anos_letivos %}
+              <option value="{{ ano }}" {% if request.GET.ano_letivo == ano|stringformat:'i' %}selected{% endif %}>{{ ano }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <div class="col-md-3">
+          <label for="status">Status:</label>
+          <select name="status" id="status" class="form-control">
+            <option value="">Todos</option>
+            {% for key, value in status_choices %}
+              <option value="{{ key }}" {% if request.GET.status == key %}selected{% endif %}>{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <div class="col-md-3">
+          <label for="turma">Turma:</label>
+          <select name="turma" id="turma" class="form-control">
+            <option value="">Todas</option>
+            {% for turma_obj in turmas %}
+              <option value="{{ turma_obj.id }}" {% if request.GET.turma == turma_obj.id|stringformat:'i' %}selected{% endif %}>{{ turma_obj.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <div class="col-md-3 align-self-end">
+          <button type="submit" class="btn btn-primary">Filtrar</button>
+          <a href="{% url 'matricula:lista_matriculas' %}" class="btn btn-secondary">Limpar</a>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  {% if matriculas %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Aluno</th>
+          <th>Turma</th>
+          <th>Data de Matrícula</th>
+          <th>Ano Letivo</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for matricula in matriculas %}
+          <tr>
+            <td>{{ matricula.aluno.nome_completo }}</td>
+            <td>{{ matricula.turma.nome }}</td>
+            <td>{{ matricula.data_matricula }}</td>
+            <td>{{ matricula.ano_letivo }}</td>
+            <td>
+              {% if matricula.status == 'ativo' %}
+                <span style="color: green;">Ativo</span>
+              {% elif matricula.status == 'pendente' %}
+                <span style="color: orange;">Pendente</span>
+              {% elif matricula.status == 'cancelado' %}
+                <span style="color: red;">Cancelado</span>
+              {% elif matricula.status == 'transferido' %}
+                <span style="color: blue;">Transferido</span>
+              {% endif %}
+            </td>
+            <td>
+              <a href="{% url 'matricula:detalhe_matricula' matricula.id %}">Ver</a>
+              <a href="{% url 'matricula:editar_matricula' matricula.id %}">Editar</a>
+              <a href="{% url 'matricula:excluir_matricula' matricula.id %}">Excluir</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há matrículas cadastradas.</p>
+  {% endif %}
+</div>
+{% endblock %}
