@@ -87,3 +87,26 @@ Separar **front** e **back** em repositórios diferentes é uma escolha profissi
 * Planeje **autenticação** (sessão → JWT), **CI/CD** separados e **observabilidade** por serviço.
   
 ## posterioremente refatorar em ingles o codigo
+
+# MVP do Sistema SmartSecretaria (melhorias)
+
+1. **Melhorias na interface do usuário**:
+   - Implementar React e Tailwind
+   - Implementar um tema consistente em todas as páginas
+   - Adicionar confirmações para ações críticas (como exclusões)
+
+2. **Implementação de Busca**:
+   - Adicionar busca global no sistema (alunos, professores, etc.)
+   - Implementar filtros avançados nas listagens
+
+3. **Relatórios**:
+   - Adicionar geração de relatórios simples (PDF ou Excel)
+   - Relatórios de alunos por turma, documentos emitidos, etc.
+
+4. **Notificações**:
+   - Sistema de notificações para eventos próximos
+   - Alertas para matrículas pendentes ou documentos importantes
+
+5. **Segurança**:
+   - Refinar o sistema de permissões por tipo de usuário
+   - Implementar registro de tentativas de login

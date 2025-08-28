@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from django.db.models import Q
 from datetime import datetime
 
 from aluno.models import Aluno
@@ -70,3 +71,57 @@ def dashboard(request):
     }
     
     return render(request, "core/dashboard.html", context)
+
+@login_required
+def busca_global(request):
+    """
+    View para busca global no sistema, retornando resultados de várias entidades.
+    """
+    query = request.GET.get('q', '')
+    resultados = {}
+    
+    if query and len(query) >= 3:  # Exigir pelo menos 3 caracteres para busca
+        # Busca em Alunos
+        resultados['alunos'] = Aluno.objects.filter(
+            Q(nome_completo__icontains=query) |
+            Q(cpf__icontains=query) |
+            Q(email__icontains=query)
+        ).order_by('nome_completo')[:10]  # Limitar a 10 resultados
+        
+        # Busca em Professores
+        resultados['professores'] = Professor.objects.filter(
+            Q(nome__icontains=query) |
+            Q(email__icontains=query) |
+            Q(disciplinas__nome__icontains=query)  # Aqui está a correção
+        ).distinct().order_by('nome')[:10]  # distinct() para evitar duplicatas
+        
+        # Busca em Turmas
+        resultados['turmas'] = Turma.objects.filter(
+            Q(nome__icontains=query) |
+            Q(serie__icontains=query) |
+            Q(turma_letra__icontains=query) |
+            Q(periodo__icontains=query)
+        ).order_by('nome')[:10]
+        
+        # Busca em Documentos
+        resultados['documentos'] = Documento.objects.filter(
+            Q(conteudo__icontains=query) |
+            Q(aluno__nome_completo__icontains=query)
+        ).order_by('-data_emissao')[:10]
+        
+        # Busca em Eventos
+        resultados['eventos'] = Evento.objects.filter(
+            Q(titulo__icontains=query) |
+            Q(descricao__icontains=query)
+        ).order_by('data_inicio')[:10]
+        
+        # Busca em Matrículas (pelo nome do aluno)
+        resultados['matriculas'] = Matricula.objects.filter(
+            aluno__nome_completo__icontains=query
+        ).order_by('-data_matricula')[:10]
+    
+    return render(request, 'core/busca_global.html', {
+        'query': query,
+        'resultados': resultados,
+        'tem_resultados': any(resultados.values()) if resultados else False
+    })
