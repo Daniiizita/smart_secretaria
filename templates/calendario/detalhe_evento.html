@@ -1,0 +1,65 @@
+{% extends "core/base.html" %}
+{% block title %}{{ evento.titulo }} - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Detalhes do Evento</h1>
+  
+  {% if messages %}
+    <div class="mensagens">
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <div class="card">
+    <div class="card-header">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>{{ evento.titulo }}</h3>
+        <div>
+          <a href="{% url 'calendario:editar_evento' evento.pk %}">Editar</a>
+          <a href="{% url 'calendario:excluir_evento' evento.pk %}">Excluir</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <dl>
+        <dt>Tipo:</dt>
+        <dd>
+          {% if evento.tipo == 'feriado' %}Feriado
+          {% elif evento.tipo == 'reuniao' %}Reunião
+          {% else %}Evento Escolar{% endif %}
+        </dd>
+        
+        <dt>Data de Início:</dt>
+        <dd>{{ evento.data_inicio }}</dd>
+        
+        <dt>Data de Término:</dt>
+        <dd>{{ evento.data_fim }}</dd>
+        
+        {% if evento.descricao %}
+        <dt>Descrição:</dt>
+        <dd>{{ evento.descricao|linebreaks }}</dd>
+        {% endif %}
+      </dl>
+      
+      <div class="status">
+        {% now "Y-m-d H:i:s" as hoje_str %}
+        {% if evento.data_inicio|date:"Y-m-d H:i:s" > hoje_str %}
+          <div style="color: blue;">Este evento ainda não começou.</div>
+        {% elif evento.data_fim|date:"Y-m-d H:i:s" < hoje_str %}
+          <div style="color: gray;">Este evento já terminou.</div>
+        {% else %}
+          <div style="color: green;">Este evento está em andamento.</div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="{% url 'calendario:lista_eventos' %}">Voltar para a lista</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

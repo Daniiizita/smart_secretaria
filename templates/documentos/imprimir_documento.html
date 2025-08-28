@@ -1,0 +1,89 @@
+{% extends "core/base.html" %}
+{% block title %}Impressão de Documento - SmartSecretaria{% endblock %}
+
+{% block extra_css %}
+<style>
+  @media print {
+    header, footer, .acoes, .no-print {
+      display: none !important;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: none;
+    }
+    .documento-impressao {
+      page-break-inside: avoid;
+    }
+  }
+  
+  .documento-cabecalho {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+  }
+  
+  .documento-titulo {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .documento-conteudo {
+    line-height: 1.6;
+  }
+  
+  .documento-assinatura {
+    margin-top: 80px;
+    text-align: center;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="acoes no-print" style="margin-bottom: 20px;">
+    <button onclick="window.print()" class="btn btn-primary">Imprimir</button>
+    <a href="{% url 'documentos:detalhe_documento' documento.id %}" class="btn btn-secondary">Voltar</a>
+  </div>
+  
+  <div class="documento-impressao">
+    <div class="documento-cabecalho">
+      <h2>SECRETARIA DE EDUCAÇÃO</h2>
+      <h3>ESCOLA MODELO</h3>
+      <p>Rua Exemplo, 123 - Cidade - Estado - CEP: 12345-678</p>
+      <p>Telefone: (12) 3456-7890 - Email: contato@escolamodelo.edu.br</p>
+    </div>
+    
+    <div class="documento-titulo">
+      {{ documento.get_tipo_display }}
+    </div>
+    
+    <div class="documento-conteudo">
+      {{ documento.conteudo|linebreaks }}
+    </div>
+    
+    <div class="documento-assinatura">
+      <p>_____________________________________________</p>
+      <p>Diretor(a) da Escola</p>
+      <p>{{ documento.data_emissao }}</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Auto-print quando a página carregar (opcional)
+  // window.onload = function() {
+  //   setTimeout(function() {
+  //     window.print();
+  //   }, 1000);
+  // };
+</script>
+{% endblock %}

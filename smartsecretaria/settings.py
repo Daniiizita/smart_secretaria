@@ -42,14 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # apps locais
     'core',
-    'aluno',
-    'turma',
-    'professor',
-    'matricula',
-    'calendario',
-    'documentos',
     'usuarios',
+    'aluno',
+    'professor',
+    'turma',
+    'calendario',
+    'matricula',
+    'documentos',
     'logs',
 ]
 

@@ -1,0 +1,82 @@
+{% extends "core/base.html" %}
+{% block title %}Documentos - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  {% if aluno %}
+    <h1>Documentos de {{ aluno.nome_completo }}</h1>
+  {% else %}
+    <h1>Documentos</h1>
+  {% endif %}
+  
+  {% if messages %}
+    <div class="mensagens">
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <div class="acoes" style="margin-bottom: 20px; display: flex; justify-content: space-between;">
+    <div>
+      {% if aluno %}
+        <a href="{% url 'documentos:novo_documento' %}?aluno_id={{ aluno.id }}" class="btn btn-success">Novo Documento para {{ aluno.nome_completo }}</a>
+        <a href="{% url 'aluno:detalhe_aluno' aluno.id %}" class="btn btn-secondary">Voltar para Aluno</a>
+      {% else %}
+        <a href="{% url 'documentos:novo_documento' %}" class="btn btn-success">Novo Documento</a>
+      {% endif %}
+    </div>
+    
+    {% if not aluno %}
+    <div>
+      <form method="get" class="form-inline" style="display: flex; align-items: center;">
+        <div class="form-group" style="margin-right: 10px;">
+          <label for="aluno_id" style="margin-right: 5px;">Filtrar por aluno:</label>
+          <select name="aluno_id" id="aluno_id" class="form-control">
+            <option value="">Selecione um aluno</option>
+            {% for aluno_item in alunos %}
+              <option value="{{ aluno_item.id }}" {% if aluno_id == aluno_item.id %}selected{% endif %}>{{ aluno_item.nome_completo }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+  
+  {% if documentos %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Aluno</th>
+          <th>Data de Emissão</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for documento in documentos %}
+          <tr>
+            <td>{{ documento.get_tipo_display }}</td>
+            <td>
+              <a href="{% url 'aluno:detalhe_aluno' documento.aluno.id %}">{{ documento.aluno.nome_completo }}</a>
+            </td>
+            <td>{{ documento.data_emissao }}</td>
+            <td>
+              <a href="{% url 'documentos:detalhe_documento' documento.id %}" class="btn btn-sm btn-info">Ver</a>
+              <a href="{% url 'documentos:editar_documento' documento.id %}" class="btn btn-sm btn-warning">Editar</a>
+              <a href="{% url 'documentos:imprimir_documento' documento.id %}" class="btn btn-sm btn-primary">Imprimir</a>
+              <a href="{% url 'documentos:excluir_documento' documento.id %}" class="btn btn-sm btn-danger">Excluir</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há documentos cadastrados{% if aluno %} para este aluno{% endif %}.</p>
+  {% endif %}
+</div>
+{% endblock %}

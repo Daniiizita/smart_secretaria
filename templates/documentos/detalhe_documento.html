@@ -1,0 +1,57 @@
+{% extends "core/base.html" %}
+{% block title %}Documento - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Documento: {{ documento.get_tipo_display }}</h1>
+  
+  {% if messages %}
+    <div class="mensagens">
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <div class="card">
+    <div class="card-header">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>{{ documento.get_tipo_display }} - {{ documento.aluno.nome_completo }}</h3>
+        <div>
+          <a href="{% url 'documentos:editar_documento' documento.id %}" class="btn btn-warning">Editar</a>
+          <a href="{% url 'documentos:imprimir_documento' documento.id %}" class="btn btn-primary">Imprimir</a>
+          <a href="{% url 'documentos:excluir_documento' documento.id %}" class="btn btn-danger">Excluir</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <dl>
+        <dt>Tipo de Documento:</dt>
+        <dd>{{ documento.get_tipo_display }}</dd>
+        
+        <dt>Aluno:</dt>
+        <dd><a href="{% url 'aluno:detalhe_aluno' documento.aluno.id %}">{{ documento.aluno.nome_completo }}</a></dd>
+        
+        <dt>Data de Emissão:</dt>
+        <dd>{{ documento.data_emissao }}</dd>
+      </dl>
+      
+      <div class="documento-conteudo">
+        <h5>Conteúdo:</h5>
+        <div style="padding: 15px; border: 1px solid #ddd; background-color: #f9f9f9;">
+          {{ documento.conteudo|linebreaks }}
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      {% if 'aluno_id' in request.GET %}
+        <a href="{% url 'documentos:lista_documentos' %}?aluno_id={{ request.GET.aluno_id }}" class="btn btn-secondary">Voltar para Lista de Documentos</a>
+      {% else %}
+        <a href="{% url 'documentos:lista_documentos' %}" class="btn btn-secondary">Voltar para Lista de Documentos</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
