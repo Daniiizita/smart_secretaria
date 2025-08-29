@@ -44,6 +44,9 @@
             <dt>Período:</dt>
             <dd>{{ turma.periodo }}</dd>
             
+            <dt>Nível de Ensino:</dt>
+            <dd>{{ turma.nivel_ensino }} ({{ turma.nivel_ensino_sigla }})</dd>
+            
             {% if turma.horario_aulas %}
             <dt>Horário das Aulas:</dt>
             <dd>{{ turma.horario_aulas|linebreaks }}</dd>
@@ -82,6 +85,7 @@
     </div>
     <div class="card-footer">
       <a href="{% url 'turma:lista_turmas' %}">Voltar para a lista</a>
+      <a href="{% url 'relatorios:alunos_da_turma_excel' turma.id %}" class="btn btn-primary">Exportar Turma em planilha</a>
     </div>
   </div>
 </div>

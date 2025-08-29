@@ -11,9 +11,5 @@ class TurmaForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super(TurmaForm, self).__init__(*args, **kwargs)
-        self.fields['serie'].widget.attrs.update({'class': 'form-control'})
-        self.fields['turma_letra'].widget.attrs.update({'class': 'form-control'})
-        self.fields['professor_responsavel'].widget.attrs.update({'class': 'form-control'})
-        self.fields['horario_aulas'].widget.attrs.update({'class': 'form-control'})
-        self.fields['ano'].widget.attrs.update({'class': 'form-control'})
-        self.fields['periodo'].widget.attrs.update({'class': 'form-control'})
+        for field_name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'form-control'})

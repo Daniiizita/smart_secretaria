@@ -99,7 +99,7 @@ Separar **front** e **back** em repositórios diferentes é uma escolha profissi
    - Adicionar busca global no sistema (alunos, professores, etc.)
    - Implementar filtros avançados nas listagens
 
-3. **Relatórios**:
+3. **Relatórios**: - OK
    - Adicionar geração de relatórios simples (PDF ou Excel)
    - Relatórios de alunos por turma, documentos emitidos, etc.
 

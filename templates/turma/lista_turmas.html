@@ -17,6 +17,7 @@
   
   <div class="acoes" style="margin-bottom: 20px;">
     <a href="{% url 'turma:nova_turma' %}">Nova Turma</a>
+    <a href="{% url 'relatorios:alunos_por_turma_excel' %}" class="btn btn-success">Exportar Todas as Turmas (Excel)</a>
   </div>
   
   {% if turmas %}

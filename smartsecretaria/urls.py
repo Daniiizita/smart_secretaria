@@ -30,6 +30,7 @@ urlpatterns = [
     path('documentos/', include('documentos.urls')),
     path('matricula/', include('matricula.urls')),
     path('accounts/', include('usuarios.urls')),
+    path('relatorios/', include('relatorios.urls', namespace='relatorios')),
     # path('usuarios/', include('usuarios.urls')),  # Removendo esta linha
     
     #API Documentacao

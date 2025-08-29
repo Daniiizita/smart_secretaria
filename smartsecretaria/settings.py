@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'matricula',
     'documentos',
     'logs',
+    'relatorios',
 ]
 
 MIDDLEWARE = [
