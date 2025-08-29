@@ -95,7 +95,7 @@ Separar **front** e **back** em repositórios diferentes é uma escolha profissi
    - Implementar um tema consistente em todas as páginas
    - Adicionar confirmações para ações críticas (como exclusões)
 
-2. **Implementação de Busca (implementado, melhorar o metodo de pesquisa pos API)**:
+2. **Implementação de Busca**: - OK mas melhorar o metodo de pesquisa pos API
    - Adicionar busca global no sistema (alunos, professores, etc.)
    - Implementar filtros avançados nas listagens
 

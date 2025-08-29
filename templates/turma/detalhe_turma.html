@@ -85,7 +85,10 @@
     </div>
     <div class="card-footer">
       <a href="{% url 'turma:lista_turmas' %}">Voltar para a lista</a>
-      <a href="{% url 'relatorios:alunos_da_turma_excel' turma.id %}" class="btn btn-primary">Exportar Turma em planilha</a>
+      <div class="acoes" style="margin-top: 20px;">
+        <a href="{% url 'relatorios:alunos_da_turma_excel' turma.id %}" class="btn btn-primary">Exportar em Excel</a>
+        <a href="{% url 'relatorios:alunos_da_turma_pdf' turma.id %}" class="btn btn-danger">Exportar em PDF</a>
+      </div>
     </div>
   </div>
 </div>

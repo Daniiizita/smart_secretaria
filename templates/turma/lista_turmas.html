@@ -15,9 +15,12 @@
     </div>
   {% endif %}
   
-  <div class="acoes" style="margin-bottom: 20px;">
-    <a href="{% url 'turma:nova_turma' %}">Nova Turma</a>
-    <a href="{% url 'relatorios:alunos_por_turma_excel' %}" class="btn btn-success">Exportar Todas as Turmas (Excel)</a>
+  <div class="acoes-gerais" style="margin: 20px 0;">
+    <h4>Relatórios</h4>
+    <div class="btn-group">
+      <a href="{% url 'relatorios:alunos_por_turma_excel' %}" class="btn btn-primary">Todas as Turmas (Excel)</a>
+      <a href="{% url 'relatorios:alunos_por_turma_pdf' %}" class="btn btn-danger">Todas as Turmas (PDF)</a>
+    </div>
   </div>
   
   {% if turmas %}
