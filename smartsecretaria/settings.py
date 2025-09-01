@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     'documentos',
     'logs',
     'relatorios',
+    'notificacoes',
+    'permissoes',
 ]
 
 MIDDLEWARE = [
@@ -90,6 +92,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'notificacoes.context_processors.notificacoes_nao_lidas',
             ],
         },
     },

@@ -16,6 +16,7 @@
   {% endif %}
   
   <div class="acoes-gerais" style="margin: 20px 0;">
+    <a href="{% url 'turma:nova_turma' %}">Nova Turma</a>
     <h4>Relatórios</h4>
     <div class="btn-group">
       <a href="{% url 'relatorios:alunos_por_turma_excel' %}" class="btn btn-primary">Todas as Turmas (Excel)</a>

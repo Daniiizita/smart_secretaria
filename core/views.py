@@ -13,6 +13,8 @@ from calendario.models import Evento
 from documentos.models import Documento
 from logs.models import LogAtividade
 
+from notificacoes.utils import criar_notificacoes_eventos
+
 def index(request):
     """
     View da página inicial (FBV = Function-Based View).
@@ -69,6 +71,9 @@ def dashboard(request):
         'documentos_mes_atual': documentos_mes_atual,
         'matriculas_ano_atual': matriculas_ano_atual,
     }
+    
+    # Gerar notificações automaticamente
+    criar_notificacoes_eventos()
     
     return render(request, "core/dashboard.html", context)
 

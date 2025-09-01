@@ -1,0 +1,33 @@
+{% load static %}
+
+<div class="dropdown">
+  <button class="btn btn-link position-relative" type="button" id="dropdownMenuNotificacoes" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi bi-bell"></i>
+    {% if notificacoes_nao_lidas > 0 %}
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{ notificacoes_nao_lidas }}
+      </span>
+    {% endif %}
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuNotificacoes" style="width: 300px;">
+    <li><h6 class="dropdown-header">Notificações</h6></li>
+    
+    {% with notificacoes=request.user.notificacao_set.all|slice:":5" %}
+      {% if notificacoes %}
+        {% for notificacao in notificacoes %}
+          <li>
+            <a class="dropdown-item {% if not notificacao.lida %}bg-light-danger{% endif %}" href="{{ notificacao.link }}">
+              <div><strong>{{ notificacao.titulo }}</strong></div>
+              <small>{{ notificacao.mensagem|truncatechars:50 }}</small>
+              <div class="text-muted"><small>{{ notificacao.criada_em|date:"d/m/Y H:i" }}</small></div>
+            </a>
+          </li>
+        {% endfor %}
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item text-center" href="{% url 'notificacoes:lista_notificacoes' %}">Ver todas</a></li>
+      {% else %}
+        <li><span class="dropdown-item text-muted">Nenhuma notificação</span></li>
+      {% endif %}
+    {% endwith %}
+  </ul>
+</div>

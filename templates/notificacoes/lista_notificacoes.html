@@ -1,0 +1,97 @@
+{% extends "core/base.html" %}
+{% block title %}Notificações - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Minhas Notificações</h1>
+  
+  {% if messages %}
+    <div class="mensagens">
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="mb-4">
+    <a href="{% url 'core:dashboard' %}" class="btn btn-secondary">Voltar ao Dashboard</a>
+  </div>
+  
+  {% if notificacoes %}
+    <div class="list-group">
+      {% for notificacao in notificacoes %}
+        <div class="list-group-item {% if not notificacao.lida %}list-group-item-warning{% endif %}">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ notificacao.titulo }}</h5>
+            <small>{{ notificacao.data_criacao|date:"d/m/Y H:i" }}</small>
+          </div>
+          <p class="mb-1">{{ notificacao.mensagem }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <span class="badge {% if notificacao.prioridade == 'alta' %}bg-danger{% elif notificacao.prioridade == 'normal' %}bg-primary{% else %}bg-info{% endif %}">{{ notificacao.get_prioridade_display }}</span>
+              <span class="badge bg-secondary">{{ notificacao.get_tipo_display }}</span>
+            </div>
+            <div>
+              {% if not notificacao.lida %}
+                <button class="btn btn-sm btn-outline-primary marcar-como-lida" data-id="{{ notificacao.id }}">Marcar como lida</button>
+              {% else %}
+                <span class="text-muted">Lida</span>
+              {% endif %}
+              {% if notificacao.url_destino %}
+                <a href="{{ notificacao.url_destino }}" class="btn btn-sm btn-primary">Ver detalhes</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-info">
+      Você não tem notificações no momento.
+    </div>
+  {% endif %}
+</div>
+
+{% block extra_js %}
+<script>
+  // Script para marcar notificações como lidas via AJAX
+  document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.marcar-como-lida');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', function() {
+        const notificacaoId = this.dataset.id;
+        const listItem = this.closest('.list-group-item');
+        
+        fetch(`/notificacoes/${notificacaoId}/ler/`, {
+          method: 'GET',
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            listItem.classList.remove('list-group-item-warning');
+            this.parentNode.innerHTML = '<span class="text-muted">Lida</span>';
+            
+            // Atualiza o contador de notificações
+            const counter = document.querySelector('#notificacoes-contador');
+            if (counter) {
+              const count = parseInt(counter.textContent) - 1;
+              counter.textContent = count > 0 ? count : '';
+              if (count <= 0) {
+                counter.classList.add('d-none');
+              }
+            }
+          }
+        })
+        .catch(error => console.error('Erro ao marcar notificação como lida:', error));
+      });
+    });
+  });
+</script>
+{% endblock %}
+{% endblock %}

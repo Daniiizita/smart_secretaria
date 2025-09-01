@@ -59,6 +59,7 @@
     </div>
     <div class="card-footer">
       <a href="{% url 'calendario:lista_eventos' %}">Voltar para a lista</a>
+      <a href="{% url 'calendario:calendario_mensal' %}?mes={{ evento.data_inicio|date:'n' }}&ano={{ evento.data_inicio|date:'Y' }}" class="btn btn-info ms-2">Mostrar no Calendário</a>
     </div>
   </div>
 </div>

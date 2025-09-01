@@ -103,10 +103,14 @@ Separar **front** e **back** em repositórios diferentes é uma escolha profissi
    - Adicionar geração de relatórios simples (PDF ou Excel)
    - Relatórios de alunos por turma, documentos emitidos, etc.
 
-4. **Notificações**:
+4. **Notificações**: - OK
    - Sistema de notificações para eventos próximos
    - Alertas para matrículas pendentes ou documentos importantes
 
 5. **Segurança**:
    - Refinar o sistema de permissões por tipo de usuário
-   - Implementar registro de tentativas de login
+   - Implementar registro de tentativas de log
+   - 
+6. Melhorar a emissão de declarações (front end)
+   
+7. 

@@ -3,13 +3,20 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.urls import reverse
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
+from permissoes.services import associar_usuario_ao_grupo
 
 def registro_usuario(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
+            usuario = form.save(commit=False)
+            usuario.save()
+            
+            # Associar ao grupo conforme o tipo de usuário
+            tipo_usuario = form.cleaned_data.get('tipo')
+            associar_usuario_ao_grupo(usuario, tipo_usuario)
+            
+            login(request, usuario)
             messages.success(request, "Registro bem-sucedido!")
             return redirect('core:index')
     else:

@@ -1,0 +1,81 @@
+{% extends "core/base.html" %}
+{% block title %}Monitoramento de Login - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Monitoramento de Tentativas de Login</h1>
+  
+  <div class="row mt-4">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Hoje</h5>
+          <p>Total: {{ estatisticas.hoje.total }}</p>
+          <p class="text-success">Sucesso: {{ estatisticas.hoje.sucesso }}</p>
+          <p class="text-danger">Falhas: {{ estatisticas.hoje.falha }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Ontem</h5>
+          <p>Total: {{ estatisticas.ontem.total }}</p>
+          <p class="text-success">Sucesso: {{ estatisticas.ontem.sucesso }}</p>
+          <p class="text-danger">Falhas: {{ estatisticas.ontem.falha }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Últimos 7 dias</h5>
+          <p>Total: {{ estatisticas.ultimos_7_dias.total }}</p>
+          <p class="text-success">Sucesso: {{ estatisticas.ultimos_7_dias.sucesso }}</p>
+          <p class="text-danger">Falhas: {{ estatisticas.ultimos_7_dias.falha }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Últimos 30 dias</h5>
+          <p>Total: {{ estatisticas.ultimos_30_dias.total }}</p>
+          <p class="text-success">Sucesso: {{ estatisticas.ultimos_30_dias.sucesso }}</p>
+          <p class="text-danger">Falhas: {{ estatisticas.ultimos_30_dias.falha }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2 class="mt-4">Últimas tentativas</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Usuário</th>
+          <th>Status</th>
+          <th>IP</th>
+          <th>Data/Hora</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tentativa in ultimas_tentativas %}
+          <tr>
+            <td>{{ tentativa.username }}</td>
+            <td>
+              {% if tentativa.sucesso %}
+                <span class="badge bg-success">Sucesso</span>
+              {% else %}
+                <span class="badge bg-danger">Falha</span>
+              {% endif %}
+            </td>
+            <td>{{ tentativa.ip_address }}</td>
+            <td>{{ tentativa.timestamp|date:"d/m/Y H:i:s" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

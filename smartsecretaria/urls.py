@@ -31,9 +31,11 @@ urlpatterns = [
     path('matricula/', include('matricula.urls')),
     path('accounts/', include('usuarios.urls')),
     path('relatorios/', include('relatorios.urls', namespace='relatorios')),
-    # path('usuarios/', include('usuarios.urls')),  # Removendo esta linha
-    
+    path('notificacoes/', include('notificacoes.urls', namespace='notificacoes')),
+    path('permissoes/', include('permissoes.urls', namespace='permissoes')),
+
     #API Documentacao
+    path('api-auth/', include('rest_framework.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

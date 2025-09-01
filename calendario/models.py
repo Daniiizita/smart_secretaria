@@ -5,6 +5,7 @@ class Evento(models.Model):
         ('feriado', 'Feriado'),
         ('evento_escolar', 'Evento Escolar'),
         ('reuniao', 'Reunião'),
+        ('outro', 'Outro'),
     ]
 
     # Campos do Evento
