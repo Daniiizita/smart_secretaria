@@ -22,14 +22,24 @@ def lista_notificacoes(request):
 @require_POST
 def marcar_como_lida(request, notificacao_id):
     """
-    Marca uma notificação como lida
+    Marca uma notificação como lida.
+    Suporta requisição AJAX (GET/POST) retornando JSON e chamadas normais retornando redirect.
     """
     try:
         notificacao = Notificacao.objects.get(id=notificacao_id, usuario=request.user)
         notificacao.lida = True
         notificacao.save()
     except Notificacao.DoesNotExist:
-        pass
+        # Se for AJAX, devolver erro em JSON
+        if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+            return JsonResponse({'status': 'error', 'message': 'Notificação não encontrada'}, status=404)
+        return redirect('notificacoes:lista_notificacoes')
+
+    # Resposta para AJAX
+    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+        return JsonResponse({'status': 'success'})
+
+    # Chamadas normais (form POST)
     return redirect('notificacoes:lista_notificacoes')
 
 @login_required

@@ -2,12 +2,13 @@
 import os
 import django
 import sys
+from django.core.management import call_command
+from django.contrib.auth import get_user_model
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "smartsecretaria.settings")
 django.setup()
 
-from django.core.management import call_command
-from django.contrib.auth import get_user_model
+
 
 User = get_user_model()
 
