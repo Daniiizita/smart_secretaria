@@ -26,19 +26,8 @@ from rest_framework_simplejwt.views import (
 
 
 urlpatterns = [
-    #URLS para SSR Django Templates
+
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),
-    path('aluno/', include('aluno.urls')),
-    path('turma/', include('turma.urls')),
-    path('professor/', include('professor.urls')),
-    path('calendario/', include('calendario.urls')),
-    path('documentos/', include('documentos.urls')),
-    path('matricula/', include('matricula.urls')),
-    path('accounts/', include('usuarios.urls')),
-    path('relatorios/', include('relatorios.urls', namespace='relatorios')),
-    path('notificacoes/', include('notificacoes.urls', namespace='notificacoes')),
-    path('permissoes/', include('permissoes.urls', namespace='permissoes')),
 
     #API Token
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
