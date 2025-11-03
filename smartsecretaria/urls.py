@@ -51,11 +51,11 @@ urlpatterns = [
     path('api/documentos/', include('documentos.api.urls')),
     path('api/logs/', include('logs.api.urls')),
     path('api/matricula/', include('matricula.api.urls')),
-    #path('api/notificacoes/', include('notificacoes.api.urls')),
-    #path('api/permissoes/', include('permissoes.api.urls')),
-    #path('api/professor/', include('professor.api.urls')),
-    #path('api/turma/', include('turma.api.urls')),
-    #path('api/usuarios/', include('usuarios.api.urls')),
+    path('api/notificacoes/', include('notificacoes.api.urls')),
+    path('api/permissoes/', include('permissoes.api.urls')),
+    path('api/professor/', include('professor.api.urls')),
+    path('api/turma/', include('turma.api.urls')),
+    path('api/usuarios/', include('usuarios.api.urls')),
     
 
     #API Documentacao
