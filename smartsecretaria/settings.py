@@ -179,18 +179,27 @@ REST_FRAMEWORK = {
 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': False,
-    'BLACKLIST_AFTER_ROTATION': True,
-    'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
-    'VERIFYING_KEY': None,
+    # Tempo de expiração do token de acesso
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # 1h de validade
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),     # 7 dias de validade
+    
+    # Renovação automática e segurança extra
+    'ROTATE_REFRESH_TOKENS': True,      # gera novo refresh token a cada uso
+    'BLACKLIST_AFTER_ROTATION': True,   # invalida o antigo
+    
+    # Padrão de autenticação
     'AUTH_HEADER_TYPES': ('Bearer',),
-    'USER_ID_FIELD': 'id',
-    'USER_ID_CLAIM': 'user_id',
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    # Algoritmo de criptografia
+    'ALGORITHM': 'HS256',
+
+    # Importante: usa a SECRET_KEY do projeto
+    'SIGNING_KEY': SECRET_KEY,
+
+    # Define se o token pode ser usado em vários microsserviços
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
 }
 
 # Configurações do DRF-Spectacular

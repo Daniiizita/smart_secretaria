@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.db.models import Q
-from datetime import datetime
 
 from aluno.models import Aluno
 from professor.models import Professor

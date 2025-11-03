@@ -9,7 +9,8 @@
       "horario_aulas": "Seg a Sex 07:30-11:30",
       "ano": 2025,
       "periodo": "Manhã",
-      "nome": "1º Ano A - Manhã 2025"
+      "nome": "1º Período A - Educação Infantil - Manhã - 2025",
+      "nivel_ensino_sigla": "EI"
     }
   },
   {
@@ -22,7 +23,8 @@
       "horario_aulas": "Seg a Sex 13:30-17:30",
       "ano": 2025,
       "periodo": "Tarde",
-      "nome": "2º Ano B - Tarde 2025"
+      "nome": "2º Período B - Educação Infantil - Tarde - 2025",
+      "nivel_ensino_sigla": "EI"
     }
   },
   {
@@ -35,7 +37,8 @@
       "horario_aulas": "Seg a Sex 07:30-11:30",
       "ano": 2025,
       "periodo": "Manhã",
-      "nome": "3º Ano A - Manhã 2025"
+      "nome": "1º Ano A - Ensino Fundamental I - Manhã - 2025",
+      "nivel_ensino_sigla": "EFI"
     }
   },
   {
@@ -48,7 +51,8 @@
       "horario_aulas": "Seg a Sex 18:30-22:00",
       "ano": 2025,
       "periodo": "Noite",
-      "nome": "4º Ano C - Noite 2025"
+      "nome": "2º Ano C - Ensino Fundamental I - Noite - 2025",
+      "nivel_ensino_sigla": "EFI"
     }
   }
 ]

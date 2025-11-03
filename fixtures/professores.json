@@ -6,11 +6,14 @@
       "nome": "Maria Silva",
       "cpf": "12345678901",
       "rg": "1234567",
+      "orgao_expedidor": "SSP/SP",
+      "data_nascimento": "1985-05-20",
       "endereco": "Rua das Flores, 123",
       "telefone_contato": "11987654321",
       "email": "maria.silva@escola.edu.br",
       "data_admissao": "2020-01-15",
-      "foto": "",
+      "naturalidade": "São Paulo/SP",
+      "foto": "fotos_professores/maria_silva.jpg",
       "disciplinas": [1, 5]
     }
   },
@@ -21,11 +24,14 @@
       "nome": "João Santos",
       "cpf": "98765432101",
       "rg": "7654321",
+      "orgao_expedidor": "SSP/RJ",
+      "data_nascimento": "1982-11-10",
       "endereco": "Avenida Central, 456",
       "telefone_contato": "11912345678",
       "email": "joao.santos@escola.edu.br",
       "data_admissao": "2019-03-10",
-      "foto": "",
+      "naturalidade": "Rio de Janeiro/RJ",
+      "foto": "fotos_professores/joao_santos.jpg",
       "disciplinas": [2, 8]
     }
   },
@@ -36,11 +42,14 @@
       "nome": "Ana Oliveira",
       "cpf": "45678912301",
       "rg": "4567891",
+      "orgao_expedidor": "SSP/MG",
+      "data_nascimento": "1990-02-15",
       "endereco": "Praça das Árvores, 789",
       "telefone_contato": "11945678923",
       "email": "ana.oliveira@escola.edu.br",
       "data_admissao": "2021-02-01",
-      "foto": "",
+      "naturalidade": "Belo Horizonte/MG",
+      "foto": null,
       "disciplinas": [3, 4]
     }
   },
@@ -51,11 +60,14 @@
       "nome": "Carlos Pereira",
       "cpf": "78912345601",
       "rg": "7891234",
+      "orgao_expedidor": "SSP/BA",
+      "data_nascimento": "1978-09-30",
       "endereco": "Rua dos Pássaros, 321",
       "telefone_contato": "11978912345",
       "email": "carlos.pereira@escola.edu.br",
       "data_admissao": "2018-08-20",
-      "foto": "",
+      "naturalidade": "Salvador/BA",
+      "foto": null,
       "disciplinas": [6, 7]
     }
   }

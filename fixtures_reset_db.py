@@ -54,4 +54,6 @@ if __name__ == "__main__":
     reset_db()
     load_fixtures()
     create_superuser()
+    print("⚙️  Configurando grupos e permissões...")
+    call_command('configurar_permissoes')
     print("\n🎉 Banco de dados resetado e populado com sucesso!")

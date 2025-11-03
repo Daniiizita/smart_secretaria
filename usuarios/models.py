@@ -9,7 +9,6 @@ class CustomUser(AbstractUser):
         ('aluno', 'Aluno'),
         ('responsavel', 'Responsável'),
     )
-    
     tipo = models.CharField(max_length=20, choices=TIPOS_USUARIO, default='admin')
     
     # Evita conflito de nomes com o modelo User do Django

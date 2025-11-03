@@ -13,7 +13,6 @@ class Documento(models.Model):
         ('outros', 'Outros')
         
     ]
-
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
     tipo = models.CharField(max_length=20, choices=TIPOS_DOCUMENTO)
     data_emissao = models.DateField()

@@ -10,7 +10,6 @@ class Notificacao(models.Model):
         ('matricula', 'Matrícula Pendente'),
         ('sistema', 'Sistema'),
     )
-    
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     tipo = models.CharField(max_length=20, choices=TIPOS)
     titulo = models.CharField(max_length=100)
