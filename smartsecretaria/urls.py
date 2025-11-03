@@ -45,6 +45,7 @@ urlpatterns = [
     path('api/professor/', include('professor.api.urls')),
     path('api/turma/', include('turma.api.urls')),
     path('api/usuarios/', include('usuarios.api.urls')),
+    path('api/dashboard/', include('core.api.urls')),
     
 
     #API Documentacao

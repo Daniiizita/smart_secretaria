@@ -14,3 +14,7 @@ class LogAtividade(models.Model):
 
     def __str__(self):
         return f"{self.data_hora} - {self.usuario} - {self.acao}"
+    
+    @property
+    def usuario_username(self):
+        return self.usuario.username if self.usuario else 'Sistema'
