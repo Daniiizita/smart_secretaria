@@ -29,9 +29,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'web',
+    '0.0.0.0',# Nome do serviço no docker-compose
+]
 
 
 # Application definition
@@ -106,7 +111,7 @@ WSGI_APPLICATION = 'smartsecretaria.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'data' / 'db.sqlite3', # Aponta para o volume
     },
 
     #NOTA: instalar o pacote mysqlclient para usar o banco de dados MySQL

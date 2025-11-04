@@ -1,0 +1,24 @@
+services:
+  web:
+    build: .
+    container_name: smartsecretaria_web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - sqlite_data:/app/data
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+volumes:
+  sqlite_data:
+
+#  db: # Exemplo para um serviço de banco de dados
+#    image: postgres:13
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data/
+#    environment:
+#      - POSTGRES_DB=smartsecretaria
+#      - POSTGRES_USER=user
+#      - POSTGRES_PASSWORD=password
