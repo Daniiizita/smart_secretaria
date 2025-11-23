@@ -1,12 +1,23 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from ..models import Turma  # troque "Aluno"
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from ..models import Turma, SERIE_CHOICES, NIVEL_CHOICES, TURMA_LETRA_CHOICES, PERIODO_CHOICES
 from .serializers import TurmaSerializer
 
 class TurmaViewSet(viewsets.ModelViewSet):
     """
     ViewSet base para CRUD completo do modelo.
     """
-    queryset = Turma.objects.all().order_by('id')  # ajuste a ordenação se precisar
+    queryset = Turma.objects.all().order_by('id')
     serializer_class = TurmaSerializer
-    permission_classes = [IsAuthenticated]  # exige JWT
+    permission_classes = [IsAuthenticated]
+
+    @action(detail=False, methods=['get'], url_path='choices')
+    def choices(self, request):
+        return Response({
+            'serie': [{'value': v, 'label': l} for v, l in SERIE_CHOICES],
+            'nivel': [{'value': v, 'label': l} for v, l in NIVEL_CHOICES],
+            'turma_letra': [{'value': v, 'label': l} for v, l in TURMA_LETRA_CHOICES],
+            'periodo': [{'value': v, 'label': l} for v, l in PERIODO_CHOICES],
+        })

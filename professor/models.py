@@ -16,16 +16,10 @@ class Professor(models.Model):
     naturalidade = models.CharField(max_length=100, blank=False, null=False, default='Brasil')
 
     # Relação com Disciplinas
-    disciplinas = models.ManyToManyField('Disciplina', blank=True)
+    disciplinas = models.ManyToManyField('disciplina.Disciplina', blank=True)  # atualizado
 
     # Campo opcional
     foto = models.ImageField(upload_to='professores/', blank=True, null=True)
-
-    def __str__(self):
-        return self.nome
-
-class Disciplina(models.Model):
-    nome = models.CharField(max_length=100)
 
     def __str__(self):
         return self.nome

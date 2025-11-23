@@ -1,55 +1,55 @@
 [
   {
-    "model": "professor.disciplina",
+    "model": "disciplina.disciplina",
     "pk": 1,
     "fields": {
       "nome": "Matemática"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplina.disciplina",
     "pk": 2,
     "fields": {
       "nome": "Português"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplina.disciplina",
     "pk": 3,
     "fields": {
       "nome": "História"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplina.disciplina",
     "pk": 4,
     "fields": {
       "nome": "Geografia"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplina.disciplina",
     "pk": 5,
     "fields": {
       "nome": "Ciências"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplina.disciplina",
     "pk": 6,
     "fields": {
       "nome": "Educação Física"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplina.disciplina",
     "pk": 7,
     "fields": {
       "nome": "Artes"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplina.disciplina",
     "pk": 8,
     "fields": {
       "nome": "Inglês"

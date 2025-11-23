@@ -1,5 +1,6 @@
 from django.test import TestCase
-from .models import Professor, Disciplina
+from .models import Professor
+from disciplina.models import Disciplina
 
 class ProfessorTestCase(TestCase):
     def setUp(self):

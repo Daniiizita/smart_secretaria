@@ -1,0 +1,6 @@
+from django.contrib import admin
+from .models import Disciplina
+
+# ...existing code...
+admin.site.register(Disciplina)
+# ...existing code...
