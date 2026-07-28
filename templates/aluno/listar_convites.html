@@ -1,0 +1,72 @@
+{% extends "core/base.html" %}
+{% block title %}Convites de Registro - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Convites de Registro</h1>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Aluno</th>
+        <th>Email</th>
+        <th>Criado em</th>
+        <th>Expira em</th>
+        <th>Status</th>
+        <th>Criado por</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for convite in convites %}
+        <tr>
+          <td>{{ convite.aluno.nome_completo }}</td>
+          <td>{{ convite.email }}</td>
+          <td>{{ convite.criado_em|date:"d/m/Y H:i" }}</td>
+          <td>{{ convite.expira_em|date:"d/m/Y H:i" }}</td>
+          <td>
+            {% if convite.usado %}
+              <span class="badge bg-success">Usado</span>
+            {% elif convite.esta_valido %}
+              <span class="badge bg-primary">Válido</span>
+            {% else %}
+              <span class="badge bg-danger">Expirado</span>
+            {% endif %}
+          </td>
+          <td>{{ convite.criado_por.username }}</td>
+          <td>
+            {% if not convite.usado and convite.esta_valido %}
+              <button class="btn btn-sm btn-info copiar-link" 
+                      data-link="{{ request.scheme }}://{{ request.get_host }}{% url 'usuarios:registrar_com_convite' token=convite.token %}">
+                Copiar Link
+              </button>
+            {% endif %}
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="7" class="text-center">Nenhum convite encontrado.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  document.querySelectorAll('.copiar-link').forEach(button => {
+    button.addEventListener('click', function() {
+      const link = this.getAttribute('data-link');
+      navigator.clipboard.writeText(link)
+        .then(() => {
+          this.textContent = 'Copiado!';
+          setTimeout(() => {
+            this.textContent = 'Copiar Link';
+          }, 2000);
+        })
+        .catch(err => {
+          alert('Erro ao copiar link: ' + err);
+        });
+    });
+  });
+</script>
+{% endblock %}

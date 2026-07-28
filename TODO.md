@@ -107,10 +107,8 @@ Separar **front** e **back** em repositórios diferentes é uma escolha profissi
    - Sistema de notificações para eventos próximos
    - Alertas para matrículas pendentes ou documentos importantes
 
-5. **Segurança**:
+5. **Segurança**: - OK
    - Refinar o sistema de permissões por tipo de usuário
    - Implementar registro de tentativas de log
    - 
 6. Melhorar a emissão de declarações (front end)
-   
-7. 

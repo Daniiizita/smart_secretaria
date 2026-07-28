@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+{% block title %}Gerar Convite para {{ aluno.nome_completo }} - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Gerar Convite para {{ aluno.nome_completo }}</h1>
+  
+  {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group mb-3">
+      <label for="email">Email do aluno:</label>
+      <input type="email" name="email" id="email" class="form-control" required
+             value="{{ aluno.email|default:'' }}">
+      <small class="form-text text-muted">Um convite será enviado para este email.</small>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Gerar e Enviar Convite</button>
+    <a href="{% url 'aluno:detalhe_aluno' aluno.id %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

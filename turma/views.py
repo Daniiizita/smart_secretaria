@@ -11,7 +11,27 @@ def lista_turmas(request):
     return render(request, 'turma/lista_turmas.html', {'turmas': turmas})
 
 @login_required
-def detalhe_turma(request, turma_id):
+def detalhe_turma(request, turma_id=None):
+    # Se o usuário for aluno, mostrar apenas sua turma
+    if request.user.tipo == 'aluno':
+        try:
+            aluno = Aluno.objects.get(usuario=request.user)
+            turma = aluno.turma
+            # Redirecionar se tentar acessar outra turma
+            if turma_id and int(turma_id) != turma.id:
+                messages.warning(request, "Você só pode visualizar sua própria turma")
+                return redirect('turma:detalhe_turma', turma_id=turma.id)
+                
+            alunos = Aluno.objects.filter(turma=turma).order_by('nome_completo')
+            return render(request, 'turma/detalhe_turma.html', {
+                'turma': turma,
+                'alunos': alunos
+            })
+        except Aluno.DoesNotExist:
+            messages.error(request, "Seu perfil de usuário não está associado a um aluno. Contate a secretaria.")
+            return redirect('core:index')
+    
+    # Para outros tipos de usuário, manter a lógica atual
     turma = get_object_or_404(Turma, id=turma_id)
     alunos = Aluno.objects.filter(turma=turma).order_by('nome_completo')
     return render(request, 'turma/detalhe_turma.html', {
@@ -75,3 +95,16 @@ def excluir_turma(request, turma_id):
         'turma': turma,
         'alunos_na_turma': alunos_na_turma
     })
+
+@login_required
+def minha_turma(request):
+    if request.user.tipo == 'aluno':
+        try:
+            aluno = Aluno.objects.get(usuario=request.user)
+            return redirect('turma:detalhe_turma', turma_id=aluno.turma.id)
+        except Aluno.DoesNotExist:
+            messages.error(request, "Seu perfil de usuário não está associado a um aluno. Contate a secretaria.")
+            return redirect('core:index')
+    else:
+        messages.error(request, "Acesso permitido apenas para alunos.")
+        return redirect('core:index')

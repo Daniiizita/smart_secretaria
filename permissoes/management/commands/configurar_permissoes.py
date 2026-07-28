@@ -5,10 +5,11 @@ from permissoes.models import PerfilAcesso
 
 class Command(BaseCommand):
     help = 'Configura os grupos de permissões do sistema'
-
+    
     def handle(self, *args, **options):
         # Criar/obter grupos
         admin_group, _ = Group.objects.get_or_create(name='Administrador')
+        diretor_group, _ = Group.objects.get_or_create(name='Diretor')  # Novo grupo
         secretaria_group, _ = Group.objects.get_or_create(name='Secretaria')
         professor_group, _ = Group.objects.get_or_create(name='Professor')
         aluno_group, _ = Group.objects.get_or_create(name='Aluno')
@@ -16,6 +17,7 @@ class Command(BaseCommand):
         
         # Limpar permissões existentes
         admin_group.permissions.clear()
+        diretor_group.permissions.clear()  # Limpar permissões do diretor
         secretaria_group.permissions.clear()
         professor_group.permissions.clear()
         aluno_group.permissions.clear()
@@ -24,8 +26,9 @@ class Command(BaseCommand):
         # Obter todas as permissões
         all_permissions = Permission.objects.all()
         
-        # Administrador tem todas as permissões
+        # Administrador e Diretor têm todas as permissões
         admin_group.permissions.add(*all_permissions)
+        diretor_group.permissions.add(*all_permissions)  # Diretor tem as mesmas permissões
         
         # Permissões da Secretaria
         secretaria_permissions = Permission.objects.filter(
@@ -57,6 +60,8 @@ class Command(BaseCommand):
         # Criar ou atualizar perfis de acesso
         perfis = [
             {'nome': 'Administrador do Sistema', 'tipo': 'admin', 'grupo': admin_group, 
+             'descricao': 'Acesso completo ao sistema'},
+            {'nome': 'Diretor Escolar', 'tipo': 'diretor', 'grupo': diretor_group, 
              'descricao': 'Acesso completo ao sistema'},
             {'nome': 'Secretaria Escolar', 'tipo': 'secretaria', 'grupo': secretaria_group, 
              'descricao': 'Gerencia alunos, professores, turmas e documentos'},

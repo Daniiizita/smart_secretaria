@@ -9,7 +9,7 @@ def associar_usuario_ao_grupo(usuario, tipo_usuario):
     
     Args:
         usuario: Instância do modelo de usuário
-        tipo_usuario: String com o tipo de usuário ('admin', 'secretaria', 'professor', 'aluno', 'responsavel')
+        tipo_usuario: String com o tipo de usuário ('admin', 'diretor', 'secretaria', 'professor', 'aluno', 'responsavel')
     
     Returns:
         True se a associação foi bem-sucedida, False caso contrário
@@ -17,6 +17,8 @@ def associar_usuario_ao_grupo(usuario, tipo_usuario):
     mapeamento_grupos = {
         'admin': 'Administrador',
         'administrador': 'Administrador',
+        'diretor': 'Diretor', 
+        'secretario': 'Secretaria',
         'secretaria': 'Secretaria',
         'professor': 'Professor',
         'aluno': 'Aluno',
@@ -33,6 +35,18 @@ def associar_usuario_ao_grupo(usuario, tipo_usuario):
         grupo = Group.objects.get(name=nome_grupo)
         usuario.groups.clear()  # Remove de todos os grupos anteriores
         usuario.groups.add(grupo)
+        
+        # Se o usuário é administrador, também damos acesso ao admin do Django
+        if tipo_normalizado in ['admin', 'diretor']:
+            usuario.is_staff = True
+            usuario.is_superuser = tipo_normalizado == 'admin'  # Só admin é superuser
+            usuario.save()
+        else:
+            # Para outros tipos, garantimos que não tenham acesso ao admin
+            usuario.is_staff = False
+            usuario.is_superuser = False
+            usuario.save()
+            
         return True
     except Group.DoesNotExist:
         return False

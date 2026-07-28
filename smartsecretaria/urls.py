@@ -33,6 +33,7 @@ urlpatterns = [
     path('relatorios/', include('relatorios.urls', namespace='relatorios')),
     path('notificacoes/', include('notificacoes.urls', namespace='notificacoes')),
     path('permissoes/', include('permissoes.urls', namespace='permissoes')),
+    path('disciplinas/', include('disciplinas.urls', namespace='disciplinas')),
 
     #API Documentacao
     path('api-auth/', include('rest_framework.urls')),

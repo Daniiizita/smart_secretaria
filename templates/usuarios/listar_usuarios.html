@@ -1,0 +1,75 @@
+{% extends "core/base.html" %}
+{% block title %}Usuários - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Usuários do Sistema</h1>
+  
+  <div class="mb-3">
+    <a href="{% url 'usuarios:criar_usuario' %}" class="btn btn-primary">Criar Novo Usuário</a>
+  </div>
+  
+  {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome de Usuário</th>
+        <th>Email</th>
+        <th>Tipo</th>
+        <th>Status</th>
+        <th>Último Login</th>
+        <th>Data de Registro</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            {% for tipo, nome in user.TIPOS_USUARIO %}
+              {% if tipo == user.tipo %}
+                {{ nome }}
+              {% endif %}
+            {% endfor %}
+          </td>
+          <td>
+            {% if user.is_active %}
+              <span class="badge bg-success">Ativo</span>
+            {% else %}
+              <span class="badge bg-danger">Inativo</span>
+            {% endif %}
+          </td>
+          <td>{{ user.last_login|default:"Nunca" }}</td>
+          <td>{{ user.date_joined }}</td>
+          <td>
+            {% if request.user.tipo == 'secretario' and user.tipo in 'admin,diretor' %}
+              <!-- Secretários não podem editar/excluir admins ou diretores -->
+              <span class="text-muted">Sem permissão</span>
+            {% else %}
+              <a href="{% url 'usuarios:editar_usuario' user.id %}" class="btn btn-sm btn-warning">Editar</a>
+              {% if user.id != request.user.id %}
+                <a href="{% url 'usuarios:excluir_usuario' user.id %}" class="btn btn-sm btn-danger">Excluir</a>
+              {% endif %}
+            {% endif %}
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="7" class="text-center">Nenhum usuário encontrado.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

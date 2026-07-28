@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:turma_id>/', views.detalhe_turma, name='detalhe_turma'),
     path('<int:turma_id>/editar/', views.editar_turma, name='editar_turma'),
     path('<int:turma_id>/excluir/', views.excluir_turma, name='excluir_turma'),
+    path('minha-turma/', views.minha_turma, name='minha_turma'),
 ]

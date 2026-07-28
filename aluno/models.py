@@ -16,6 +16,7 @@ class Aluno(models.Model):
     nome_responsavel = models.CharField(max_length=100, blank=True, null=True)
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to='alunos/', blank=True, null=True)
+    usuario = models.OneToOneField('usuarios.CustomUser', on_delete=models.SET_NULL, null=True, blank=True, related_name='perfil_aluno')
 
     def __str__(self):
         return f"{self.nome_completo} - Turma: {self.turma}"

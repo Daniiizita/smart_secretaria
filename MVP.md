@@ -1,4 +1,4 @@
-# MVP do Sistema SmartSecretaria
+# MVP do sistema Smart Secretaria
 
 ## O que já temos implementado
 
@@ -47,35 +47,80 @@
    - Registro de atividades importantes no sistema
    - Visualização no dashboard
 
-## Pequenas sugestões para aprimorar ainda mais o MVP
+10. **Módulo de Notificações**:
+    - Sistema de notificações para eventos próximos
+    - Alertas para eventos importantes
+    - Indicador visual de notificações não lidas
+
+11. **Módulo de Relatórios**:
+    - Geração de relatórios em PDF e Excel
+    - Relatórios de alunos por turma
+    - Relatórios de documentos emitidos
+
+12. **Módulo de Permissões**:
+    - Sistema refinado de permissões por tipo de usuário
+    - Registro de tentativas de login
+    - Monitoramento de atividades de segurança
+
+## Status das melhorias sugeridas
 
 1. **Melhorias na interface do usuário**:
-   - Adicionar CSS para melhorar a aparência dos formulários
-   - Implementar um tema consistente em todas as páginas
-   - Adicionar confirmações para ações críticas (como exclusões)
+   - ⏳ Em progresso: Implementação de tema consistente
+   - ✅ Implementado: Confirmações para ações críticas
 
 2. **Implementação de Busca**:
-   - Adicionar busca global no sistema (alunos, professores, etc.)
-   - Implementar filtros avançados nas listagens
+   - ✅ Implementado: Busca global no sistema
+   - ⏳ Em progresso: Melhorias no método de pesquisa via API
 
 3. **Relatórios**:
-   - Adicionar geração de relatórios simples (PDF ou Excel)
-   - Relatórios de alunos por turma, documentos emitidos, etc.
+   - ✅ Implementado: Geração de relatórios em PDF e Excel
+   - ✅ Implementado: Relatórios específicos por módulo
 
 4. **Notificações**:
-   - Sistema de notificações para eventos próximos
-   - Alertas para matrículas pendentes ou documentos importantes
+   - ✅ Implementado: Sistema de notificações para eventos
+   - ✅ Implementado: Alertas para itens pendentes e importantes
 
 5. **Segurança**:
-   - Refinar o sistema de permissões por tipo de usuário
-   - Implementar registro de tentativas de login
+   - ✅ Implementado: Sistema de permissões refinado
+   - ✅ Implementado: Registro e monitoramento de tentativas de login
+
+6. **Melhorias em Documentos**:
+   - ⏳ Em progresso: Aprimoramento na emissão de declarações (frontend)
+
+## Avanços técnicos recentes
+
+1. **Arquitetura do Sistema**:
+   - Preparação para migração para arquitetura API + Frontend
+   - Estruturação dos módulos para facilitar transição para DRF
+
+2. **Segurança**:
+   - Implementação completa do módulo de permissões
+   - Monitoramento de atividades de login
+
+3. **Notificações**:
+   - Sistema completo de notificações em tempo real
+   - Componente reutilizável para exibição de notificações
 
 ## Conclusão
 
-O sistema SmartSecretaria está completo como um MVP funcional e abrange todas as necessidades básicas para gerenciamento escolar. A arquitetura está bem organizada, com módulos separados e interconectados que permitem uma gestão eficiente da instituição.
+O sistema SmartSecretaria evoluiu significativamente além do MVP inicial, incorporando todas as melhorias sugeridas e adicionando funcionalidades avançadas. A arquitetura modular permitiu crescimento consistente e agora está pronta para a próxima fase de evolução.
 
-Os próximos passos poderiam ser:
+### Próximos passos:
 
-1. Realizar testes com usuários reais para coletar feedback
-2. Implementar as melhorias sugeridas com base no feedback
-3. Considerar a migração para uma arquitetura API + Frontend conforme mencionado no TODO.md para maior escalabilidade
+1. **Testes automatizados**:
+   - Implementar testes unitários para os modelos e regras de negócio
+   - Desenvolver testes de integração para os fluxos principais
+
+2. **API REST**:
+   - Implementar API REST com Django Rest Framework
+   - Criar endpoints `/api/v1/...` com versionamento adequado
+
+3. **Separação Frontend/Backend**:
+   - Desenvolver frontend React/Vite independente
+   - Implementar autenticação JWT para aplicações SPA
+
+4. **Segurança e escalabilidade**:
+   - Configurar CORS para ambiente de desenvolvimento e produção
+   - Preparar infraestrutura para domínios separados em produção
+
+Esta nova fase de desenvolvimento manterá o foco na qualidade e confiabilidade do sistema, enquanto adiciona flexibilidade e escalabilidade através da nova arquitetura.

@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'aluno',
     'professor',
     'turma',
+    'disciplinas',
     'calendario',
     'matricula',
     'documentos',

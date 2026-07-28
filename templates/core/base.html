@@ -161,6 +161,15 @@
         <a href="/matricula/">Matrículas</a>
         <a href="/calendario/">Calendário</a>
         <a href="/documentos/">Documentos</a>
+        {% if user.tipo == 'admin' or user.tipo == 'diretor' or user.tipo == 'secretario' %}
+        <a href="{% url 'usuarios:listar_usuarios' %}" {% if request.resolver_match.url_name == 'listar_usuarios' %}class="active"{% endif %}>Usuários</a>
+        {% endif %}
+        {% if user.tipo == 'aluno' %}
+          <a href="{% url 'documentos:lista_documentos' %}">Meus Documentos</a>
+          <a href="{% url 'turma:minha_turma' %}">Minha Turma</a>
+        {% else %}
+          <!-- Links existentes para outros tipos de usuário -->
+        {% endif %}
       {% else %}
         <a href="{% url 'usuarios:login' %}">Login</a>
         <a href="{% url 'usuarios:registro' %}">Registrar</a>

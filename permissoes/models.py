@@ -7,6 +7,7 @@ User = get_user_model()
 class PerfilAcesso(models.Model):
     TIPOS = [
         ('admin', 'Administrador'),
+        ('diretor', 'Diretor'),
         ('secretaria', 'Secretaria'),
         ('professor', 'Professor'),
         ('aluno', 'Aluno'),

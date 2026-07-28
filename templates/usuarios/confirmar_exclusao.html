@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+{% block title %}Excluir Usuário - SmartSecretaria{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-danger text-white">
+          <h2>Confirmar Exclusão</h2>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-warning">
+            <p>Tem certeza que deseja excluir o usuário <strong>{{ usuario.username }}</strong>?</p>
+            <p>Tipo: 
+              {% for tipo, nome in usuario.TIPOS_USUARIO %}
+                {% if tipo == usuario.tipo %}{{ nome }}{% endif %}
+              {% endfor %}
+            </p>
+            <p>Esta ação é irreversível e todos os dados associados a este usuário podem ser perdidos.</p>
+          </div>
+          
+          <form method="post">
+            {% csrf_token %}
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button type="submit" class="btn btn-danger me-md-2">Sim, excluir usuário</button>
+              <a href="{% url 'usuarios:listar_usuarios' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

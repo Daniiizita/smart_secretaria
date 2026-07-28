@@ -1,58 +1,114 @@
 [
   {
-    "model": "professor.disciplina",
+    "model": "disciplinas.disciplina",
     "pk": 1,
     "fields": {
-      "nome": "Matemática"
+      "nome": "Matemática",
+      "codigo": "MAT01",
+      "descricao": "Matemática básica e avançada",
+      "carga_horaria": 80,
+      "ativa": true,
+      "nivel_ensino": "EM",
+      "data_criacao": "2023-11-22T00:00:00Z",
+      "data_atualizacao": "2023-11-22T00:00:00Z"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplinas.disciplina",
     "pk": 2,
     "fields": {
-      "nome": "Português"
+      "nome": "Português",
+      "codigo": "PORT01",
+      "descricao": "Língua portuguesa e literatura",
+      "carga_horaria": 80,
+      "ativa": true,
+      "nivel_ensino": "EM",
+      "data_criacao": "2023-11-22T00:00:00Z",
+      "data_atualizacao": "2023-11-22T00:00:00Z"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplinas.disciplina",
     "pk": 3,
     "fields": {
-      "nome": "História"
+      "nome": "História",
+      "codigo": "HIST01",
+      "descricao": "História geral e do Brasil",
+      "carga_horaria": 60,
+      "ativa": true,
+      "nivel_ensino": "EM",
+      "data_criacao": "2023-11-22T00:00:00Z",
+      "data_atualizacao": "2023-11-22T00:00:00Z"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplinas.disciplina",
     "pk": 4,
     "fields": {
-      "nome": "Geografia"
+      "nome": "Geografia",
+      "codigo": "GEO01",
+      "descricao": "Geografia geral e do Brasil",
+      "carga_horaria": 60,
+      "ativa": true,
+      "nivel_ensino": "EM",
+      "data_criacao": "2023-11-22T00:00:00Z",
+      "data_atualizacao": "2023-11-22T00:00:00Z"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplinas.disciplina",
     "pk": 5,
     "fields": {
-      "nome": "Ciências"
+      "nome": "Ciências",
+      "codigo": "CIEN01",
+      "descricao": "Ciências naturais",
+      "carga_horaria": 60,
+      "ativa": true,
+      "nivel_ensino": "EFII",
+      "data_criacao": "2023-11-22T00:00:00Z",
+      "data_atualizacao": "2023-11-22T00:00:00Z"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplinas.disciplina",
     "pk": 6,
     "fields": {
-      "nome": "Educação Física"
+      "nome": "Educação Física",
+      "codigo": "EDFIS01",
+      "descricao": "Educação física e esportes",
+      "carga_horaria": 40,
+      "ativa": true,
+      "nivel_ensino": null,
+      "data_criacao": "2023-11-22T00:00:00Z",
+      "data_atualizacao": "2023-11-22T00:00:00Z"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplinas.disciplina",
     "pk": 7,
     "fields": {
-      "nome": "Artes"
+      "nome": "Artes",
+      "codigo": "ART01",
+      "descricao": "Artes visuais e história da arte",
+      "carga_horaria": 40,
+      "ativa": true,
+      "nivel_ensino": null,
+      "data_criacao": "2023-11-22T00:00:00Z",
+      "data_atualizacao": "2023-11-22T00:00:00Z"
     }
   },
   {
-    "model": "professor.disciplina",
+    "model": "disciplinas.disciplina",
     "pk": 8,
     "fields": {
-      "nome": "Inglês"
+      "nome": "Inglês",
+      "codigo": "ING01",
+      "descricao": "Língua inglesa",
+      "carga_horaria": 60,
+      "ativa": true,
+      "nivel_ensino": null,
+      "data_criacao": "2023-11-22T00:00:00Z",
+      "data_atualizacao": "2023-11-22T00:00:00Z"
     }
   }
 ]

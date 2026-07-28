@@ -9,10 +9,18 @@ from logs.utils import registrar_atividade
 
 @login_required
 def lista_documentos(request):
-    # Buscar todos os alunos para o filtro
-    alunos = Aluno.objects.all().order_by('nome_completo')
+    # Se o usuário for aluno, mostrar apenas seus documentos
+    if request.user.tipo == 'aluno' and hasattr(request.user, 'perfil_aluno'):
+        aluno = request.user.perfil_aluno
+        documentos = Documento.objects.filter(aluno=aluno).order_by('-data_emissao')
+        return render(request, 'documentos/lista_documentos.html', {
+            'documentos': documentos,
+            'aluno': aluno,
+            'aluno_id': aluno.id
+        })
     
-    # Filtrar documentos por aluno se o parâmetro for fornecido
+    # Para outros tipos de usuário, manter a lógica atual
+    alunos = Aluno.objects.all().order_by('nome_completo')
     aluno_id = request.GET.get('aluno_id')
     
     if aluno_id:
